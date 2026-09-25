@@ -24,7 +24,30 @@ function Projects(){
                     Projects
                 </h2>
                 <div className="grid md:grid-cols-2 gap-8">
-                    
+                    {projects.map((project) => (
+                    <div key={project.title}
+                    className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+                    >
+                        <div className="px-6">
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">
+                                {project.title}
+                            </h3>
+                            <p className="text-gray-600 mb-4">
+                                {project.description}
+                            </p>
+                            <p className="text-sm text-gray-500 mb-4">
+                                {project.tech}
+                            </p>
+                            <a href={project.link}
+                            target="_blank"
+                            rel="noopener  noreferral"
+                            className="text-gray-900 font-medium hover:underline"
+                            >
+                                View Project →
+                            </a>
+                        </div>
+                    </div>
+                    ))}
                 </div>
             </div>
         </section>
