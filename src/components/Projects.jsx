@@ -1,4 +1,7 @@
 import { motion } from 'framer-motion'
+import Movie from '../assets/Movie.png'
+import moviecard from '../assets/moviecard.png'
+import landingPage from '../assets/landingPage.png'
 
 function Projects(){
 
@@ -8,15 +11,18 @@ function Projects(){
     description: 'A landing page built with clean, responsive layout and modern styling.',
     tech: 'HTML, CSS, JavaScript',
     link: '#',
+    image: landingPage,
   },
-
   {
     title: 'Movie Streaming Platform',
     description: 'A movie streaming platform with a searchable catalog, powered by the TMDB API for movie data and Appwrite for the backend database.',
     tech: 'React, Appwrite, TMDB API',
     link: 'https://github.com/Victor9001/My-React-App',
+    images: [moviecard, Movie],
   },
+
 ]
+
 
     return(
         <section id="projects" className="py-24 px-6 bg-gray-50 dark:bg-gray-950">
@@ -32,13 +38,33 @@ function Projects(){
                 </h2>
                 <motion.div className="grid md:grid-cols-2 gap-8">
                     {projects.map((project, index) => (
-                    <div key={project.title}
+                    <motion.div key={project.title}
                     className="bg-white  dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
                     initial={{ opacity: 0, y: 40 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: index * 0.3 }}
                     >
+
+                        {project.images ? (
+                      <div className="grid grid-cols-2 gap-1">
+                         {project.images.map((img, i) => (
+                     <img
+                           key={i}
+                           src={img}
+                           alt={`${project.title} screenshot ${i + 1}`}
+                            className="w-full h-32 object-cover"
+                     />
+                ))}
+                     </div>
+                       ) : (
+                        <img
+                            src={project.image}
+                            alt={project.title}
+                           className="w-full h-48 object-cover"
+                       />
+                   )}
+
                         <div className="px-6">
                             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                                 {project.title}
@@ -57,7 +83,7 @@ function Projects(){
                                 View Project →
                             </a>
                         </div>
-                    </div>
+                    </motion.div>
                     ))}
                 </motion.div>
             </motion.div>
