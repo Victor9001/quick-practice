@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 function About(){
   return(
-    <section id="about" className="py-24 px-6 bg-white">
+    <section id="about" className="py-24 px-6 bg-white dark:bg-gray-900">
         <motion.div
                   className="max-w-3xl mx-auto"
                   initial={{ opacity: 0, y: 40 }}
@@ -11,11 +11,11 @@ function About(){
                  transition={{ duration: 0.6 }}
                  >
 
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
                 About Me
             </h2>
 
-            <p className="text-lg text-gray-600 leading-relaxed mb-4">
+            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
                 I'm a self-taught frontend developer who started with the fundamentals 
                  HTML, CSS, and JavaScript 
                  and built up from there with Bootstrap and hands-on projects.
@@ -24,7 +24,7 @@ function About(){
                    and sites that feel fast and intentional rather than templated.
             </p>
             
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                 Right now I'm expanding into React and Tailwind CSS to build faster,
                  more scalable frontends — while also taking on client work through my Fiverr gig,
                  delivering custom responsive websites from start to finish.

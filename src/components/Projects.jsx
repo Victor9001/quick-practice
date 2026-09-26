@@ -19,7 +19,7 @@ function Projects(){
 ]
 
     return(
-        <section id="projects" className="py-24 px-6 bg-gray-50">
+        <section id="projects" className="py-24 px-6 bg-gray-50 dark:bg-gray-950">
             <motion.div 
             className="max-w-6xl mx-auto"
              initial={{ opacity: 0, y: 40 }}
@@ -27,32 +27,32 @@ function Projects(){
              viewport={{ once: true }}
              transition={{ duration: 0.6 }}
              >
-                <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-12">
                     Projects
                 </h2>
                 <motion.div className="grid md:grid-cols-2 gap-8">
                     {projects.map((project, index) => (
                     <div key={project.title}
-                    className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+                    className="bg-white  dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
                     initial={{ opacity: 0, y: 40 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: index * 0.3 }}
                     >
                         <div className="px-6">
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                                 {project.title}
                             </h3>
-                            <p className="text-gray-600 mb-4">
+                            <p className="text-gray-600 dark:text-gray-300 mb-4">
                                 {project.description}
                             </p>
-                            <p className="text-sm text-gray-500 mb-4">
+                            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
                                 {project.tech}
                             </p>
                             <a href={project.link}
                             target="_blank"
                             rel="noopener  noreferral"
-                            className="text-gray-900 font-medium hover:underline"
+                            className="text-gray-900 dark:text-white font-medium hover:underline"
                             >
                                 View Project →
                             </a>
