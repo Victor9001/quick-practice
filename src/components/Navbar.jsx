@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 
 function Navbar (){
     const [isOpen, setIsOpen] = useState(false)
+    const [activeSection, setActiveSection] = useState('home')
 
     const menuRef = useRef(null)
 
@@ -13,6 +14,25 @@ function Navbar (){
         }
         document.addEventListener('mousedown', HandleClicksOutside)
         return() => document.removeEventListener('mousedown', HandleClicksOutside)
+    }, [])
+
+    useEffect(() => {
+        function handleScrolls(){
+            const sections = navLinks.map((link) => link.href.replace('#', ''))
+
+            for(const section of sections){
+                const element = document.getElementById(section)
+                if(element){
+                    const rect = element.getBoundingClientRect()
+                    if(rect.top <= 100 && rect.bottom >= 100) {
+                        setActiveSection(section)
+                        break
+                    }
+                }
+            }
+        }
+        window.addEventListener('scroll', handleScrolls)
+        return () =>  window.removeEventListener('scroll', handleScrolls)
     }, [])
 
     const navLinks = [
@@ -37,7 +57,11 @@ function Navbar (){
                         <li key={link.name}>
 
                             <a href={link.href}
-                            className="text-gray-600 hover:text-gray-900 transition-colors"
+                            className={`transition-colors ${
+                                       activeSection === link.href.replace('#', '')
+                                             ? 'text-gray-900 font-semibold'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                        }`}
                             >
                                 {link.name}
                             </a>
@@ -53,7 +77,7 @@ function Navbar (){
             </div>
 
             {isOpen && (
-                
+
                 <ul ref={menuRef} className="md:hidden flex flex-col gap-4 px-6 pb-4">
 
                     {navLinks.map((link) => (

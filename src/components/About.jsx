@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 function About(){
   return(
-    <section id="#about" className="py-24 px-6 bg-white">
+    <section id="about" className="py-24 px-6 bg-white">
         <motion.div
                   className="max-w-3xl mx-auto"
                   initial={{ opacity: 0, y: 40 }}
