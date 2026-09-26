@@ -79,6 +79,7 @@ function Navbar (){
                     ))}
                 </ul>
 
+                 <div className="flex items-center gap-3">
                 <button
                          onClick={() => setDarkMode(!darkMode)}
                          className="hidden md:block text-gray-600 hover:text-gray-900
@@ -87,12 +88,24 @@ function Navbar (){
                         {darkMode ? <Sun size={20} /> : <Moon size={20} />}
                 </button>
 
+                <button
+                    onClick={() => setDarkMode(!darkMode)}
+                    className="md:hidden text-gray-800 dark:text-white mr-4"
+                 >
+                    {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+                </button>
+
                 <button className="md:hidden text-gray-800 dark:text-white"
                             onClick={() => setIsOpen(!isOpen)}
                             >
                                 {isOpen ? '✕' : '☰'}
                 </button>
             </div>
+                
+            </div>
+            
+           
+               
 
             {isOpen && (
 
