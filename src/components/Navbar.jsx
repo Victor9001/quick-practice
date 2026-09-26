@@ -1,7 +1,19 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function Navbar (){
     const [isOpen, setIsOpen] = useState(false)
+
+    const menuRef = useRef(null)
+
+    useEffect(()=> {
+        function HandleClicksOutside(event){
+            if(menuRef.current && !menuRef.current.contains(event.target)){
+                setIsOpen(false)
+            }
+        }
+        document.addEventListener('mousedown', HandleClicksOutside)
+        return() => document.removeEventListener('mousedown', HandleClicksOutside)
+    }, [])
 
     const navLinks = [
         {name: "Home", href:"#home"},
@@ -13,7 +25,9 @@ function Navbar (){
 
     return(
         <nav className="fixed top-0 w-full left-0 bg-white shadow-md z-50">
+
             <div className="max-w-6xl flex items-center justify-between mx-auto px-6 py-4">
+
                 <a href="#home" className="text-xl font-bold text-gray-800">
                     Victor Shelby.
                 </a>
@@ -23,27 +37,32 @@ function Navbar (){
                         <li key={link.name}>
 
                             <a href={link.href}
-                            className="text-gray-600 hover:text-gray-900 transition-colors">
+                            className="text-gray-600 hover:text-gray-900 transition-colors"
+                            >
                                 {link.name}
                             </a>
                         </li>
                     ))}
                 </ul>
+
                 <button className="md:hidden text-gray-800"
-                            onClick={()=> setIsOpen(!isOpen)}
+                            onClick={() => setIsOpen(!isOpen)}
                             >
                                 {isOpen ? '✕' : '☰'}
                 </button>
             </div>
 
             {isOpen && (
-                <ul className="md:hidden flex flex-col gap-4 px-6 pb-4">
+                
+                <ul ref={menuRef} className="md:hidden flex flex-col gap-4 px-6 pb-4">
+
                     {navLinks.map((link) => (
                         <li key={link.name}>
                             <a href={link.href}
                              className="text-gray-600 hover:text-gray-900"
                              onClick={()=> setIsOpen(false)}
-                             >{link.name}
+                             >
+                                {link.name}
                              </a>
                         </li>
                     ))}
