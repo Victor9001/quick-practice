@@ -1,9 +1,16 @@
+import { motion } from 'framer-motion'
 
 function Contact(){
 
     return(
         <section id="contact" className="py-24 px-6 bg-gray-50">
-            <div className="max-w-2xl mx-auto text-center">
+            <motion.div className="max-w-2xl mx-auto text-center"
+             initial={{ opacity: 0, y: 40 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.6 }}
+             >
+
                 <h2 className="text-3xl text-gray-900 mb-4 font-bold">
                     Get In Touch
                 </h2>
@@ -36,7 +43,7 @@ function Contact(){
                      View My Fiverr
                       </a>
                 </div>
-            </div>
+            </motion.div>
         </section>
     )
 

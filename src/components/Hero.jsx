@@ -1,9 +1,16 @@
+import { motion } from 'framer-motion'
 
 function Hero (){
 
     return(
         <section id="home" className="min-h-screen flex items-center justify-center bg-gray-50 px-6">
-            <div className="text-center max-w-2xl">
+            <motion.div 
+               className="text-center max-w-2xl"
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                       >
+
                 <h1 className="text-5xl font-bold text-gray-900 mb-4">
                     Hi!, I am Victor Shelby
                 </h1>
@@ -16,7 +23,7 @@ function Hero (){
                      >
                         View my work
                      </a>
-            </div>
+            </motion.div>
         </section>
     )
 }

@@ -1,4 +1,5 @@
 import { Code2, Palette, FileCode, Layers } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 function Skills() {
 
@@ -11,17 +12,29 @@ function Skills() {
 
     return(
         <section id='skills' className='py-24 px-6 bg-white'>
-            <div className='max-w-6xl mx-auto'>
+            <motion.div 
+            className='max-w-6xl mx-auto'
+            initial={{ opacity: 0, y: 40 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+              transition={{ duration: 0.6 }}>
+
                 <h2 className='text-3xl text-gray-900 text-center font-bold mb-12'>
                     Skills
                 </h2>
                 <div className='grid sm:grid-cols-2 md:grid-cols-4 gap-6'>
-                    {skills.map((skill) => {
+                    {skills.map((skill, index) => {
                         const Icon = skill.icon
                         return(
-                            <div
+                            <motion.div
                             key={skill.name}
-                            className='flex flex-col items-center text-center p-6 rounded-xl border border-gray-900 hover:-transition-y-1 transition-all'>
+                            className='flex flex-col items-center text-center p-6 rounded-xl border border-gray-900 hover:-transition-y-1 transition-all'
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.15 }}
+                            >
+
                                 <div className='w-14 h-14 flex items-center justify-center bg-gray-900 rounded-full text-white mb-4'>
                                     <Icon size={24} />
                                 </div>
@@ -31,11 +44,11 @@ function Skills() {
                                 <p className='text-sm text-gray-500'>
                                     {skill.description}
                                 </p>
-                            </div>
+                            </motion.div>
                         )
                     })}
                 </div>
-            </div>
+            </motion.div>
         </section>
     )
 

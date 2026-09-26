@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 
 function Projects(){
 
@@ -19,14 +20,24 @@ function Projects(){
 
     return(
         <section id="projects" className="py-24 px-6 bg-gray-50">
-            <div className="max-w-6xl mx-auto">
+            <motion.div 
+            className="max-w-6xl mx-auto"
+             initial={{ opacity: 0, y: 40 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.6 }}
+             >
                 <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
                     Projects
                 </h2>
-                <div className="grid md:grid-cols-2 gap-8">
-                    {projects.map((project) => (
+                <motion.div className="grid md:grid-cols-2 gap-8">
+                    {projects.map((project, index) => (
                     <div key={project.title}
                     className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+                    initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.3 }}
                     >
                         <div className="px-6">
                             <h3 className="text-xl font-bold text-gray-900 mb-2">
@@ -48,8 +59,8 @@ function Projects(){
                         </div>
                     </div>
                     ))}
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         </section>
     )
 
