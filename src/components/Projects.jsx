@@ -17,8 +17,16 @@ function Projects(){
     title: 'Movie Streaming Platform',
     description: 'A movie streaming platform with a searchable catalog, powered by the TMDB API for movie data and Appwrite for the backend database.',
     tech: 'React, Appwrite, TMDB API',
-    link: 'https://github.com/Victor9001/My-React-App',
+    link: 'https://my-react-app-eight-woad.vercel.app/',
     images: [moviecard, Movie],
+  },
+
+  {
+    title: 'FUTA-NAV',
+    description: 'A navigation app for FUTA students, providing easy access to campus information and resources.',
+    tech: ' React',
+    link: 'https://futa-nav-map.vercel.app/',
+    image: FutaNav,
   },
 
 ]
